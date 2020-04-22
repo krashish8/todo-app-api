@@ -22,8 +22,7 @@ class LoginView(generics.GenericAPIView):
     def post(self, request):
         """
         Takes the username and password as input, validates them\
-        and returns the **REST Token** (Authentication Token),\
-        if the credentials are valid.
+        and returns the **Token** if the credentials are valid.
         """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -39,7 +38,7 @@ class RegisterView(generics.GenericAPIView):
 
     def post(self, request):
         """
-        Registers a users in Django by taking the name, email,\
+        Registers a user in Django by taking the name, email,\
         username and password as input. Username and password\
         are required for login.
         """
