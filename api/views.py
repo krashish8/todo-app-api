@@ -17,7 +17,7 @@ class TodoListView(generics.ListAPIView):
         """
         Returns todo that belong to the logged in user.
         """
-        return Todo.objects.filter(creator=self.request.user)
+        return Todo.objects.filter(creator=self.request.user).order_by('id')
 
 
 class TodoDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -48,7 +48,7 @@ class TodoDetailView(generics.RetrieveUpdateDestroyAPIView):
         """
         if self.request.user.is_anonymous:
             return None
-        return Todo.objects.filter(creator=self.request.user)
+        return Todo.objects.filter(creator=self.request.user).order_by('id')
     
 
 class TodoCreateView(generics.GenericAPIView):
